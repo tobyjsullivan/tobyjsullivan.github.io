@@ -81,13 +81,13 @@ Gem files will remain installed in /Users/toby/.rbenv/versions/2.2.4/lib/ruby/ge
 Results logged to /Users/toby/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/extensions/x86_64-darwin-15/2.2.0-static/eventmachine-1.0.7/gem_make.out
 ```
 
-A little research produced [one solution](http://stackoverflow.com/questions/30818391/gem-eventmachine-fatal-error-openssl-ssl-h-file-not-found) for installing that gem. This worked great to install the gem.
+A little research produced [one solution](http://stackoverflow.com/questions/30818391/gem-eventmachine-fatal-error-openssl-ssl-h-file-not-found) for installing that gem.
 
 ```bash
 gem install eventmachine -- --with-cppflags=-I/usr/local/opt/openssl/include
 ```
 
-However, I was still encountering the original error when running the full `bundle install` command. Turns out, some more research pointed me to [the solution](https://github.com/eventmachine/eventmachine/issues/602) which finally solved the problem for good.
+This worked great to install that one gem. However, I was still encountering the original error when running the full `bundle install` command. Turns out, some more research pointed me to [the solution](https://github.com/eventmachine/eventmachine/issues/602) which finally solved the problem for good.
 
 ```bash
 bundle config build.eventmachine --with-cppflags=-I/usr/local/opt/openssl/include
